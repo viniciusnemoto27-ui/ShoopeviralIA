@@ -137,3 +137,41 @@ $('review').onclick=()=>{
 };
 <script src="script.js"></script>
 </body></html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const botoes = document.querySelectorAll(
+    "button, [data-page], [data-tab]"
+  );
+
+  botoes.forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      const destino =
+        botao.getAttribute("data-page") ||
+        botao.getAttribute("data-tab");
+
+      if (destino) {
+        const secao = document.getElementById(destino);
+
+        if (secao) {
+          document.querySelectorAll("main section, .page, .tab-content")
+            .forEach(function (item) {
+              item.style.display = "none";
+            });
+
+          secao.style.display = "block";
+        }
+      }
+    });
+  });
+
+  const gerarRoteiro = document.querySelectorAll("button");
+
+  gerarRoteiro.forEach(function (botao) {
+    if (botao.textContent.toLowerCase().includes("gerar roteiro")) {
+      botao.addEventListener("click", function () {
+        alert("Shopee Viral IA: módulo de roteiros iniciado!");
+      });
+    }
+  });
+});
+</script>
