@@ -75,7 +75,8 @@ button{cursor:pointer;font-size:14px}.action{border:0;border-radius:9px;padding:
 <button class="action secondary" id="copyVideo" hidden>Copiar texto</button>
 <div id="youtubeCreateArea" hidden style="margin-top:12px">
   <p class="muted">Depois de copiar o texto, abra o YouTube Create e importe a foto do produto pela galeria do celular. A montagem do vídeo é feita dentro do YouTube Create.</p>
-  <a class="action primary" id="openYouTubeCreate" href="https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.producer" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Abrir YouTube Create</a>
+  <a class="action primary" id="openYouTubeCreate" href="intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.youtube.producer;end" style="display:block;text-align:center;text-decoration:none">Abrir YouTube Create</a>
+  <p class="muted">Este botão tenta abrir o aplicativo instalado. Se não abrir, confira se o YouTube Create está instalado e atualizado.</p>
 </div>
 </div>
 </section>
