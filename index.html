@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,210 +6,134 @@
 <meta name="theme-color" content="#111111">
 <title>Shopee Viral IA</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#111;color:white;font-family:Arial,sans-serif}
-header{text-align:center;padding:22px;background:#191919;border-bottom:2px solid #ff6a00}
-header h1{color:#ff6a00;margin:0}
-header p{color:#ccc}
-nav{display:grid;grid-template-columns:repeat(4,1fr);background:#222;position:sticky;top:0}
-nav button{background:none;color:white;border:0;padding:15px 2px;font-size:12px}
-nav button.active{background:#ff6a00}
-main{padding:16px}
-.page{display:none}
-.page.active{display:block}
-h2,h3{color:#ff791a}
-.card{background:#202020;border:1px solid #444;border-radius:12px;padding:16px;margin-bottom:15px}
-input,select,textarea{width:100%;padding:12px;margin:8px 0 15px;background:#333;color:white;border:1px solid #555;border-radius:8px}
-input[type=checkbox]{width:auto}
-label{color:#ddd}
-.action{background:#ff6a00;color:white;border:0;border-radius:8px;padding:13px;width:100%;font-size:15px;font-weight:bold;margin:7px 0;cursor:pointer}
-.secondary{background:#444}
-.result{color:#ffb078;line-height:1.6;margin-top:12px;overflow-wrap:anywhere}
-.small{font-size:12px;color:#aaa}
-footer{text-align:center;padding:20px;color:#888}
+:root{--bg:#101010;--panel:#1b1b1b;--panel2:#242424;--orange:#ff6a00;--text:#f5f5f5;--muted:#aaa;--line:#333;--green:#35c77a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial, sans-serif}
+header{padding:22px 18px 16px;background:#151515;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.brand{font-size:23px;font-weight:800}.brand span{color:var(--orange)}.subtitle{color:var(--muted);font-size:12px;margin-top:5px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#151515;position:sticky;top:75px;z-index:4}
+nav button{white-space:nowrap;border:1px solid #444;background:#222;color:#eee;padding:10px 13px;border-radius:9px;font-weight:bold}
+nav button.active, .primary{background:var(--orange);border-color:var(--orange);color:#111}
+main{max-width:850px;margin:auto;padding:16px}
+.page{display:none}.page.active{display:block}
+h2{font-size:20px;margin:8px 0 6px}p.help{color:var(--muted);font-size:13px;line-height:1.5;margin-top:4px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin:13px 0}
+label{display:block;font-size:13px;color:#ddd;margin:12px 0 6px}
+input,select,textarea{width:100%;background:#101010;color:white;border:1px solid #444;border-radius:9px;padding:12px;font-size:15px}
+textarea{min-height:100px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{cursor:pointer;font-size:14px}.action{border:0;border-radius:9px;padding:12px 15px;font-weight:bold;margin-top:12px}
+.secondary{background:#333;color:white;border:1px solid #555}.primary{font-weight:bold}
+.stat{font-size:24px;font-weight:800;color:var(--orange)}.muted{color:var(--muted);font-size:12px}
+.result{white-space:pre-wrap;background:#111;border:1px solid #444;padding:13px;border-radius:9px;margin-top:12px;line-height:1.5}
+.notice{border-left:3px solid var(--orange);padding:10px 12px;background:#292019;color:#f5d8c4;border-radius:5px;font-size:13px;line-height:1.5}
+.good{color:var(--green)}footer{text-align:center;color:#777;font-size:11px;padding:25px}
+@media(max-width:520px){.row{grid-template-columns:1fr}nav{top:75px}header{padding-top:18px}}
 </style>
 </head>
 <body>
-
-<header>
-<h1>🧡 Shopee Viral IA</h1>
-<p>Garimpo inteligente para Shopee</p>
-</header>
-
+<header><div class="brand">SHOPEE <span>VIRAL IA</span></div><div class="subtitle">Garimpo inteligente • Criador de conteúdo • Conformidade</div></header>
 <nav>
-<button class="active" onclick="showPage('inicio',this)">Início</button>
-<button onclick="showPage('garimpo',this)">Garimpo</button>
-<button onclick="showPage('videos',this)">Criar vídeos</button>
-<button onclick="showPage('conformidade',this)">Conformidade</button>
+<button class="active" data-page="inicio">Início</button>
+<button data-page="garimpo">Garimpo</button>
+<button data-page="videos">Vídeos IA</button>
+<button data-page="conformidade">Conformidade</button>
 </nav>
-
 <main>
-
 <section id="inicio" class="page active">
-<h2>Bem-vindo ao Shopee Viral IA!</h2>
-<div class="card">
-<h3>Garimpo inteligente</h3>
-<p>Encontre oportunidades de produtos para divulgar.</p>
-<button class="action" onclick="showPage('garimpo')">Abrir Garimpo</button>
+<h2>Painel inicial</h2><p class="help">Sua central de apoio para encontrar produtos e preparar conteúdos de afiliado.</p>
+<div class="row">
+<div class="card"><div class="muted">Filtro principal</div><div class="stat">&lt; 300</div><div>Afiliados por produto</div></div>
+<div class="card"><div class="muted">Filtro principal</div><div class="stat">&gt; 500</div><div>Vendas por produto</div></div>
 </div>
-<div class="card">
-<h3>Criação de vídeos</h3>
-<p>Prepare conteúdos promocionais com fotos e prompts.</p>
-<button class="action" onclick="showPage('videos')">Criar vídeo</button>
-</div>
-<div class="card">
-<h3>Conformidade</h3>
-<p>Confira os cuidados antes de publicar.</p>
-<button class="action" onclick="showPage('conformidade')">Verificar conteúdo</button>
-</div>
+<div class="card"><h2>Comece por aqui</h2><p class="help">Use o Garimpo para registrar e avaliar produtos. Depois, gere um roteiro de vídeo de 15 segundos na área Vídeos IA.</p><div class="notice">A integração oficial com a Shopee ainda depende da liberação da API. Por enquanto, você pode preencher os dados dos produtos manualmente e usar as ferramentas de criação.</div></div>
+<div class="card"><h2>Status do projeto</h2><p class="good">✓ Aplicativo local funcionando</p><p>✓ Navegação entre telas</p><p>✓ Cadastro e filtro manual de produtos</p><p>✓ Gerador de roteiro e prompt</p><p>○ API Shopee: aguardando credenciais e aprovação</p></div>
 </section>
-
 <section id="garimpo" class="page">
-<h2>🔎 Garimpo inteligente</h2>
+<h2>Garimpo inteligente</h2><p class="help">Cadastre produtos encontrados na Shopee. O app destaca os que atendem aos seus critérios: menos de 300 afiliados e mais de 500 vendas.</p>
 <div class="card">
-<h3>Filtros de produtos</h3>
-<label>Máximo de afiliados</label>
-<input id="afiliados" type="number" value="300">
-<label>Mínimo de vendas</label>
-<input id="vendas" type="number" value="500">
-<label>Pesquisar produto</label>
-<input id="busca" placeholder="Ex: vestido, maquiagem">
-<button class="action" onclick="buscarProdutos()">Buscar oportunidades</button>
-<div id="resultadoGarimpo" class="result">Configure os filtros e toque em buscar.</div>
+<label>Nome do produto</label><input id="productName" placeholder="Ex.: vestido feminino canelado">
+<div class="row"><div><label>Quantidade de afiliados</label><input id="affiliates" type="number" min="0" placeholder="Ex.: 120"></div><div><label>Total de vendas</label><input id="sales" type="number" min="0" placeholder="Ex.: 850"></div></div>
+<div class="row"><div><label>Vendas por dia (se souber)</label><input id="daily" type="number" min="0" placeholder="Opcional"></div><div><label>Vendas no mês (se souber)</label><input id="monthly" type="number" min="0" placeholder="Opcional"></div></div>
+<label>Link do produto (opcional)</label><input id="productLink" type="url" placeholder="https://...">
+<button class="action primary" id="addProduct">Adicionar produto</button>
 </div>
-<div class="card">
-<h3>Critérios prioritários</h3>
-<p>✓ Menos de 300 afiliados</p>
-<p>✓ Mais de 500 vendas</p>
-<p>✓ Atualização diária quando houver integração.</p>
-<p class="small">A busca real depende da API da Shopee.</p>
+<div class="card"><div class="row"><div><div class="muted">Produtos cadastrados</div><div class="stat" id="totalProducts">0</div></div><div><div class="muted">Dentro dos critérios</div><div class="stat" id="qualifiedProducts">0</div></div></div>
+<label><input style="width:auto" type="checkbox" id="onlyQualified"> Mostrar somente produtos dentro dos critérios</label>
+<div id="productList"></div>
 </div>
 </section>
-
 <section id="videos" class="page">
-<h2>🎬 Criar vídeos</h2>
+<h2>Gerador de vídeos IA</h2><p class="help">Crie um roteiro e um prompt automático para vídeo vertical de 15 segundos. Use fotos reais do produto como referência para preservar os detalhes.</p>
 <div class="card">
-<h3>Enviar fotos</h3>
-<label>Escolha fotos do produto</label>
-<input id="fotos" type="file" accept="image/*" multiple onchange="mostrarFotos()">
-<div id="visualFotos" class="result"></div>
+<label>Produto</label><input id="videoProduct" placeholder="Nome e características do produto">
+<label>Detalhes importantes</label><textarea id="videoDetails" placeholder="Cor, material, tamanho, benefícios e o que aparece nas fotos..."></textarea>
+<label>Estilo de cenário</label><select id="videoStyle"><option>UGC realista, em ambiente de casa</option><option>Demonstração realista em fundo neutro</option><option>Unboxing realista</option><option>Estilo demonstração de influenciador</option></select>
+<label>Foto do produto (opcional)</label><input id="photo" type="file" accept="image/*">
+<div id="photoStatus" class="muted"></div>
+<button class="action primary" id="generateVideo">Gerar roteiro e prompt</button>
+<div id="videoOutput" class="result" hidden></div>
+<button class="action secondary" id="copyVideo" hidden>Copiar texto</button>
 </div>
-<div class="card">
-<h3>Configuração do vídeo</h3>
-<label>Descrição do produto</label>
-<textarea id="produto" rows="3" placeholder="Descreva seu produto"></textarea>
-<label>Duração</label>
-<select id="duracao">
-<option value="15">15 segundos</option>
-<option value="30">30 segundos</option>
-<option value="60">60 segundos</option>
-</select>
-<label>Qualidade</label>
-<select id="qualidade"><option>1080p</option></select>
-<label>Estilo</label>
-<select id="estilo">
-<option>Realista, fiel às fotos originais</option>
-<option>UGC - demonstração natural</option>
-<option>Apresentação comercial</option>
-</select>
-<button class="action" onclick="gerarPrompt()">Gerar prompt automático</button>
-<div id="resultadoPrompt" class="result"></div>
-<button class="action secondary" onclick="copiarPrompt()">Copiar prompt</button>
-</div>
-<p class="small">A geração do vídeo exige integração com um serviço de IA.</p>
 </section>
-
 <section id="conformidade" class="page">
-<h2>🛡️ Conformidade</h2>
-<div class="card">
-<h3>Verificação antes de publicar</h3>
-<label><input type="checkbox" class="check"> Produto corresponde ao anúncio.</label><br><br>
-<label><input type="checkbox" class="check"> Imagens têm autorização de uso.</label><br><br>
-<label><input type="checkbox" class="check"> Não existem promessas falsas.</label><br><br>
-<label><input type="checkbox" class="check"> Legendas e hashtags são adequadas.</label><br><br>
-<label><input type="checkbox" class="check"> Conteúdo respeita as regras da Shopee.</label>
-<button class="action" onclick="verificarConformidade()">Verificar conteúdo</button>
-<div id="resultadoConformidade" class="result"></div>
+<h2>Verificação de conformidade</h2><p class="help">Checklist de revisão antes de exportar ou publicar. Esta verificação é orientativa e não garante aprovação pela Shopee.</p>
+<div class="card" id="checks">
+<label><input type="checkbox"> O vídeo mostra o produto anunciado, sem trocar ou distorcer suas características.</label>
+<label><input type="checkbox"> Preço, desconto, estoque e prazo foram conferidos e estão atualizados.</label>
+<label><input type="checkbox"> Não há promessas falsas, resultados garantidos ou informações enganosas.</label>
+<label><input type="checkbox"> Tenho autorização para usar imagens, músicas, marcas e materiais de terceiros.</label>
+<label><input type="checkbox"> Legendas e hashtags descrevem corretamente o produto.</label>
+<label><input type="checkbox"> Revisei o conteúdo final antes da publicação.</label>
+<button class="action primary" id="review">Verificar checklist</button><div id="reviewResult" class="result" hidden></div>
 </div>
+<div class="notice">A publicação automática e a consulta de métricas da Shopee só poderão ser ativadas quando houver acesso autorizado à API e forem confirmadas as permissões disponíveis.</div>
 </section>
-
 </main>
-
-<footer>Shopee Viral IA © 2026</footer>
-
+<footer>Shopee Viral IA • Protótipo local • Dados salvos neste aparelho</footer>
 <script>
-let promptAtual = "";
-
-function showPage(id,button){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-if(button){button.classList.add('active');}
-else{
-const nomes=['inicio','garimpo','videos','conformidade'];
-document.querySelectorAll('nav button')[nomes.indexOf(id)].classList.add('active');
+const $=id=>document.getElementById(id);
+document.querySelectorAll('nav button').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ btn.classList.add('active');$(btn.dataset.page).classList.add('active');window.scrollTo(0,0);
+}));
+let products=[];try{products=JSON.parse(localStorage.getItem('svia_products')||'[]')}catch(e){products=[]}
+function saveProducts(){localStorage.setItem('svia_products',JSON.stringify(products));renderProducts()}
+function renderProducts(){
+ const list=$('productList');list.innerHTML='';
+ const filtered=$('onlyQualified').checked?products.filter(p=>p.affiliates<300&&p.sales>500):products;
+ $('totalProducts').textContent=products.length;
+ $('qualifiedProducts').textContent=products.filter(p=>p.affiliates<300&&p.sales>500).length;
+ if(!filtered.length){list.innerHTML='<p class="muted">Nenhum produto nesta lista ainda.</p>';return}
+ filtered.forEach(p=>{const i=products.indexOf(p),ok=p.affiliates<300&&p.sales>500;
+ const d=document.createElement('div');d.className='result';
+ const title=document.createElement('strong');title.textContent=p.name;d.append(title);
+ const info=document.createElement('div');info.textContent=`Afiliados: ${p.affiliates} • Vendas: ${p.sales} • Dia: ${p.daily||'—'} • Mês: ${p.monthly||'—'}`;d.append(info);
+ const status=document.createElement('p');status.className=ok?'good':'muted';status.textContent=ok?'✓ Dentro dos critérios':'Fora dos critérios definidos';d.append(status);
+ if(p.link){const a=document.createElement('a');a.href=p.link;a.target='_blank';a.rel='noopener';a.textContent='Abrir produto';a.style.color='#ff8a3d';d.append(a)}
+ const del=document.createElement('button');del.className='action secondary';del.textContent='Excluir';del.onclick=()=>{products.splice(i,1);saveProducts()};d.append(del);list.append(d);
+ });
 }
-window.scrollTo(0,0);
-}
-
-function buscarProdutos(){
-const a=Number(document.getElementById('afiliados').value);
-const v=Number(document.getElementById('vendas').value);
-const b=document.getElementById('busca').value;
-document.getElementById('resultadoGarimpo').innerHTML=
-'<strong>Filtros configurados!</strong><br>'+
-'Máximo de afiliados: '+a+
-'<br>Mínimo de vendas: '+v+
-'<br>Pesquisa: '+(b||'Todos os produtos')+
-'<br><br>Para encontrar produtos reais, conecte a API da Shopee. Nenhum produto foi consultado ainda.';
-}
-
-function mostrarFotos(){
-const arquivos=document.getElementById('fotos').files;
-document.getElementById('visualFotos').textContent=
-arquivos.length+' foto(s) selecionada(s).';
-}
-
-function gerarPrompt(){
-const produto=document.getElementById('produto').value.trim();
-const duracao=document.getElementById('duracao').value;
-const qualidade=document.getElementById('qualidade').value;
-const estilo=document.getElementById('estilo').value;
-if(!produto){
-alert('Digite a descrição do produto primeiro.');
-return;
-}
-promptAtual='Crie um vídeo promocional de '+duracao+
-' segundos, em '+qualidade+', estilo '+estilo+
-'. Produto: '+produto+
-'. Preserve fielmente a aparência, cores, formato e detalhes do produto nas fotos originais. Crie um gancho atrativo nos primeiros segundos, demonstre os benefícios reais, use cenas naturais, legenda clara e chamada para ação convidando a conhecer o produto. Não invente características, preços ou resultados. Formato vertical 9:16.';
-document.getElementById('resultadoPrompt').textContent=promptAtual;
-}
-
-function copiarPrompt(){
-if(!promptAtual){
-alert('Gere um prompt primeiro.');
-return;
-}
-if(navigator.clipboard && window.isSecureContext){
-navigator.clipboard.writeText(promptAtual)
-.then(()=>alert('Prompt copiado!'))
-.catch(()=>alert('Selecione e copie o texto manualmente.'));
-}else{
-alert('Selecione o texto do prompt e copie manualmente.');
-}
-}
-
-function verificarConformidade(){
-const checks=document.querySelectorAll('.check');
-const total=[...checks].filter(c=>c.checked).length;
-const resultado=document.getElementById('resultadoConformidade');
-if(total===checks.length){
-resultado.innerHTML='Checklist preenchido. Faça uma revisão humana antes de publicar. Este resultado não garante aprovação da Shopee.';
-}else{
-resultado.innerHTML='Atenção: '+total+' de '+checks.length+' verificações concluídas. Revise os itens restantes antes de publicar.';
-}
-}
+$('addProduct').onclick=()=>{
+ const name=$('productName').value.trim(),aff=Number($('affiliates').value),sales=Number($('sales').value);
+ if(!name||$('affiliates').value===''||$('sales').value===''){alert('Preencha o nome, a quantidade de afiliados e as vendas.');return}
+ products.unshift({name,affiliates:aff,sales,daily:$('daily').value,monthly:$('monthly').value,link:$('productLink').value.trim()});
+ saveProducts();['productName','affiliates','sales','daily','monthly','productLink'].forEach(id=>$(id).value='');alert('Produto cadastrado!');
+};
+$('onlyQualified').onchange=renderProducts;renderProducts();
+$('photo').onchange=()=>{$('photoStatus').textContent=$('photo').files.length?'Foto selecionada neste aparelho. Inclua-a também na ferramenta de geração de vídeo que você usar.':''};
+$('generateVideo').onclick=()=>{
+ const product=$('videoProduct').value.trim(),details=$('videoDetails').value.trim();
+ if(!product){alert('Digite o nome do produto.');return}
+ const style=$('videoStyle').value;
+ const output=`ROTEIRO — 15 SEGUNDOS\n\n0–3s | GANCHO: “Olha o detalhe desse ${product}!”\n3–10s | DEMONSTRAÇÃO: mostrar o produto de perto, seus detalhes e benefícios confirmados: ${details||'descrever somente características verificadas do produto'}.\n10–15s | CHAMADA PARA AÇÃO: “Confira os detalhes e o preço atualizado no link do produto!”\n\nPROMPT PARA IA DE VÍDEO\nCrie um vídeo vertical 9:16, com 15 segundos, em estilo ${style}. Produto: ${product}. Características: ${details||'usar apenas características visíveis e confirmadas'}. Priorize realismo e fidelidade total à foto original: não alterar formato, cor, textura, logotipo, proporções ou acessórios do produto. Faça movimentos suaves de câmera, enquadramentos próximos e demonstração clara. Use iluminação natural, cenário coerente e aparência de vídeo UGC autêntico. Não invente funcionalidades, avaliações, preços, descontos ou resultados. Deixe espaço visual para legenda. Finalize com uma chamada para conferir o produto.`;
+ $('videoOutput').textContent=output;$('videoOutput').hidden=false;$('copyVideo').hidden=false;
+};
+$('copyVideo').onclick=async()=>{try{await navigator.clipboard.writeText($('videoOutput').textContent);alert('Texto copiado!')}catch(e){alert('Não foi possível copiar automaticamente. Toque e segure o texto para selecionar e copiar.')}};
+$('review').onclick=()=>{
+ const boxes=[...$('checks').querySelectorAll('input[type=checkbox]')],done=boxes.filter(b=>b.checked).length;
+ $('reviewResult').hidden=false;
+ $('reviewResult').textContent=done===boxes.length?'Checklist preenchido. Faça uma revisão humana final antes de publicar.':'Checklist incompleto: '+done+' de '+boxes.length+' itens marcados. Revise os itens que faltam antes de publicar.';
+};
 </script>
-</body>
-</html>
+</body></html>
