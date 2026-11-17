@@ -1,128 +1,216 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111111">
 <title>Shopee Viral IA</title>
 <style>
-:root {
---bg:#101010;
---panel:#1b1b1b;
---orange:#ff6a00;
---text:#f7f7f7;
---muted:#aaa;
---line:#333;
-}
-* {box-sizing:border-box}
-body {
-margin:0;
-background:var(--bg);
-color:var(--text);
-font:15px/1.5 Arial,sans-serif;
-}
-header {
-padding:22px 18px;
-background:linear-gradient(135deg,#171717,#292019);
-border-bottom:1px solid var(--line);
-}
-.brand {display:flex;align-items:center;gap:12px}
-.logo {
-width:46px;height:46px;border-radius:13px;
-background:var(--orange);
-display:grid;place-items:center;
-color:#111;font-weight:900;font-size:22px;
-}
-h1 {font-size:21px;margin:0}
-header p {margin:4px 0 0;color:var(--muted);font-size:13px}
-nav {
-display:flex;gap:8px;overflow:auto;
-padding:12px 16px;background:#151515;
-border-bottom:1px solid var(--line);
-}
-nav a {
-color:#ddd;text-decoration:none;padding:9px 13px;
-border-radius:9px;white-space:nowrap;font-size:13px;
-}
-nav a.active,nav a:hover {
-background:var(--orange);color:#111;font-weight:bold;
-}
-main {max-width:980px;margin:20px auto;padding:0 16px}
-.hero {
-padding:22px;border:1px solid #3a2a1e;
-border-radius:16px;
-background:linear-gradient(120deg,#21170f,#191919);
-margin-bottom:18px;
-}
-.hero h2 {font-size:23px;margin:0 0 6px}
-.hero h2 span {color:var(--orange)}
-.hero p {color:#c4c4c4;margin:0}
-.grid {
-display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:14px;
-}
-.card {
-background:var(--panel);
-border:1px solid var(--line);
-border-radius:14px;
-padding:17px;
-margin-bottom:15px;
-}
-.card h3 {margin:0 0 12px;font-size:17px}
-.card h3 b {color:var(--orange)}
-label {
-display:block;color:#ddd;font-size:13px;
-margin:10px 0 5px;
-}
-input,select,textarea {
-width:100%;background:#101010;color:var(--text);
-border:1px solid #444;border-radius:9px;
-padding:11px;font:inherit;
-}
-input[type=file] {padding:9px}
-.row {display:grid;grid-template-columns:1fr 1fr;gap:10px}
-button {
-border:0;border-radius:9px;background:var(--orange);
-color:#111;font-weight:700;padding:12px 15px;
-margin-top:13px;cursor:pointer;
-}
-.note {font-size:12px;color:var(--muted);margin:10px 0 0}
-.pill {
-display:inline-block;background:#302116;
-color:#ff9a52;border:1px solid #613719;
-border-radius:30px;padding:4px 9px;
-font-size:11px;margin:3px;
-}
-.status {
-padding:12px;border-radius:10px;background:#151515;
-border:1px dashed #555;color:#bbb;font-size:13px;
-}
-footer {
-text-align:center;color:#777;
-font-size:12px;padding:25px;
-}
-@media(max-width:650px) {
-.grid,.row {grid-template-columns:1fr}
-.hero h2 {font-size:20px}
-}
+*{box-sizing:border-box}
+body{margin:0;background:#111;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:22px;background:#191919;border-bottom:2px solid #ff6a00}
+header h1{color:#ff6a00;margin:0}
+header p{color:#ccc}
+nav{display:grid;grid-template-columns:repeat(4,1fr);background:#222;position:sticky;top:0}
+nav button{background:none;color:white;border:0;padding:15px 2px;font-size:12px}
+nav button.active{background:#ff6a00}
+main{padding:16px}
+.page{display:none}
+.page.active{display:block}
+h2,h3{color:#ff791a}
+.card{background:#202020;border:1px solid #444;border-radius:12px;padding:16px;margin-bottom:15px}
+input,select,textarea{width:100%;padding:12px;margin:8px 0 15px;background:#333;color:white;border:1px solid #555;border-radius:8px}
+input[type=checkbox]{width:auto}
+label{color:#ddd}
+.action{background:#ff6a00;color:white;border:0;border-radius:8px;padding:13px;width:100%;font-size:15px;font-weight:bold;margin:7px 0;cursor:pointer}
+.secondary{background:#444}
+.result{color:#ffb078;line-height:1.6;margin-top:12px;overflow-wrap:anywhere}
+.small{font-size:12px;color:#aaa}
+footer{text-align:center;padding:20px;color:#888}
 </style>
 </head>
 <body>
+
 <header>
-<div class="brand">
-<div class="logo">SV</div>
-<div>
-<h1>Shopee Viral IA</h1>
-<p>Garimpo inteligente • Conteúdo para Shopee Vídeos</p>
-</div>
-</div>
+<h1>🧡 Shopee Viral IA</h1>
+<p>Garimpo inteligente para Shopee</p>
 </header>
+
 <nav>
-<a href="#inicio">Início</a>
-<a href="#garimpo">Garimpo</a>
-<a href="#videos">Criar vídeo</a>
-<a href="#conformidade">Conformidade</a>
+<button class="active" onclick="showPage('inicio',this)">Início</button>
+<button onclick="showPage('garimpo',this)">Garimpo</button>
+<button onclick="showPage('videos',this)">Criar vídeos</button>
+<button onclick="showPage('conformidade',this)">Conformidade</button>
 </nav>
+
 <main>
+
+<section id="inicio" class="page active">
+<h2>Bem-vindo ao Shopee Viral IA!</h2>
+<div class="card">
+<h3>Garimpo inteligente</h3>
+<p>Encontre oportunidades de produtos para divulgar.</p>
+<button class="action" onclick="showPage('garimpo')">Abrir Garimpo</button>
+</div>
+<div class="card">
+<h3>Criação de vídeos</h3>
+<p>Prepare conteúdos promocionais com fotos e prompts.</p>
+<button class="action" onclick="showPage('videos')">Criar vídeo</button>
+</div>
+<div class="card">
+<h3>Conformidade</h3>
+<p>Confira os cuidados antes de publicar.</p>
+<button class="action" onclick="showPage('conformidade')">Verificar conteúdo</button>
+</div>
+</section>
+
+<section id="garimpo" class="page">
+<h2>🔎 Garimpo inteligente</h2>
+<div class="card">
+<h3>Filtros de produtos</h3>
+<label>Máximo de afiliados</label>
+<input id="afiliados" type="number" value="300">
+<label>Mínimo de vendas</label>
+<input id="vendas" type="number" value="500">
+<label>Pesquisar produto</label>
+<input id="busca" placeholder="Ex: vestido, maquiagem">
+<button class="action" onclick="buscarProdutos()">Buscar oportunidades</button>
+<div id="resultadoGarimpo" class="result">Configure os filtros e toque em buscar.</div>
+</div>
+<div class="card">
+<h3>Critérios prioritários</h3>
+<p>✓ Menos de 300 afiliados</p>
+<p>✓ Mais de 500 vendas</p>
+<p>✓ Atualização diária quando houver integração.</p>
+<p class="small">A busca real depende da API da Shopee.</p>
+</div>
+</section>
+
+<section id="videos" class="page">
+<h2>🎬 Criar vídeos</h2>
+<div class="card">
+<h3>Enviar fotos</h3>
+<label>Escolha fotos do produto</label>
+<input id="fotos" type="file" accept="image/*" multiple onchange="mostrarFotos()">
+<div id="visualFotos" class="result"></div>
+</div>
+<div class="card">
+<h3>Configuração do vídeo</h3>
+<label>Descrição do produto</label>
+<textarea id="produto" rows="3" placeholder="Descreva seu produto"></textarea>
+<label>Duração</label>
+<select id="duracao">
+<option value="15">15 segundos</option>
+<option value="30">30 segundos</option>
+<option value="60">60 segundos</option>
+</select>
+<label>Qualidade</label>
+<select id="qualidade"><option>1080p</option></select>
+<label>Estilo</label>
+<select id="estilo">
+<option>Realista, fiel às fotos originais</option>
+<option>UGC - demonstração natural</option>
+<option>Apresentação comercial</option>
+</select>
+<button class="action" onclick="gerarPrompt()">Gerar prompt automático</button>
+<div id="resultadoPrompt" class="result"></div>
+<button class="action secondary" onclick="copiarPrompt()">Copiar prompt</button>
+</div>
+<p class="small">A geração do vídeo exige integração com um serviço de IA.</p>
+</section>
+
+<section id="conformidade" class="page">
+<h2>🛡️ Conformidade</h2>
+<div class="card">
+<h3>Verificação antes de publicar</h3>
+<label><input type="checkbox" class="check"> Produto corresponde ao anúncio.</label><br><br>
+<label><input type="checkbox" class="check"> Imagens têm autorização de uso.</label><br><br>
+<label><input type="checkbox" class="check"> Não existem promessas falsas.</label><br><br>
+<label><input type="checkbox" class="check"> Legendas e hashtags são adequadas.</label><br><br>
+<label><input type="checkbox" class="check"> Conteúdo respeita as regras da Shopee.</label>
+<button class="action" onclick="verificarConformidade()">Verificar conteúdo</button>
+<div id="resultadoConformidade" class="result"></div>
+</div>
+</section>
+
+</main>
+
+<footer>Shopee Viral IA © 2026</footer>
+
+<script>
+let promptAtual = "";
+
+function showPage(id,button){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+if(button){button.classList.add('active');}
+else{
+const nomes=['inicio','garimpo','videos','conformidade'];
+document.querySelectorAll('nav button')[nomes.indexOf(id)].classList.add('active');
+}
+window.scrollTo(0,0);
+}
+
+function buscarProdutos(){
+const a=Number(document.getElementById('afiliados').value);
+const v=Number(document.getElementById('vendas').value);
+const b=document.getElementById('busca').value;
+document.getElementById('resultadoGarimpo').innerHTML=
+'<strong>Filtros configurados!</strong><br>'+
+'Máximo de afiliados: '+a+
+'<br>Mínimo de vendas: '+v+
+'<br>Pesquisa: '+(b||'Todos os produtos')+
+'<br><br>Para encontrar produtos reais, conecte a API da Shopee. Nenhum produto foi consultado ainda.';
+}
+
+function mostrarFotos(){
+const arquivos=document.getElementById('fotos').files;
+document.getElementById('visualFotos').textContent=
+arquivos.length+' foto(s) selecionada(s).';
+}
+
+function gerarPrompt(){
+const produto=document.getElementById('produto').value.trim();
+const duracao=document.getElementById('duracao').value;
+const qualidade=document.getElementById('qualidade').value;
+const estilo=document.getElementById('estilo').value;
+if(!produto){
+alert('Digite a descrição do produto primeiro.');
+return;
+}
+promptAtual='Crie um vídeo promocional de '+duracao+
+' segundos, em '+qualidade+', estilo '+estilo+
+'. Produto: '+produto+
+'. Preserve fielmente a aparência, cores, formato e detalhes do produto nas fotos originais. Crie um gancho atrativo nos primeiros segundos, demonstre os benefícios reais, use cenas naturais, legenda clara e chamada para ação convidando a conhecer o produto. Não invente características, preços ou resultados. Formato vertical 9:16.';
+document.getElementById('resultadoPrompt').textContent=promptAtual;
+}
+
+function copiarPrompt(){
+if(!promptAtual){
+alert('Gere um prompt primeiro.');
+return;
+}
+if(navigator.clipboard && window.isSecureContext){
+navigator.clipboard.writeText(promptAtual)
+.then(()=>alert('Prompt copiado!'))
+.catch(()=>alert('Selecione e copie o texto manualmente.'));
+}else{
+alert('Selecione o texto do prompt e copie manualmente.');
+}
+}
+
+function verificarConformidade(){
+const checks=document.querySelectorAll('.check');
+const total=[...checks].filter(c=>c.checked).length;
+const resultado=document.getElementById('resultadoConformidade');
+if(total===checks.length){
+resultado.innerHTML='Checklist preenchido. Faça uma revisão humana antes de publicar. Este resultado não garante aprovação da Shopee.';
+}else{
+resultado.innerHTML='Atenção: '+total+' de '+checks.length+' verificações concluídas. Revise os itens restantes antes de publicar.';
+}
+}
+</script>
+</body>
+</html>
