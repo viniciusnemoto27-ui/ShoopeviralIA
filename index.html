@@ -73,6 +73,10 @@ button{cursor:pointer;font-size:14px}.action{border:0;border-radius:9px;padding:
 <button class="action primary" id="generateVideo">Gerar roteiro e prompt</button>
 <div id="videoOutput" class="result" hidden></div>
 <button class="action secondary" id="copyVideo" hidden>Copiar texto</button>
+<div id="youtubeCreateArea" hidden style="margin-top:12px">
+  <p class="muted">Depois de copiar o texto, abra o YouTube Create e importe a foto do produto pela galeria do celular. A montagem do vídeo é feita dentro do YouTube Create.</p>
+  <a class="action primary" id="openYouTubeCreate" href="https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.producer" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Abrir YouTube Create</a>
+</div>
 </div>
 </section>
 <section id="conformidade" class="page">
@@ -127,7 +131,7 @@ $('generateVideo').onclick=()=>{
  if(!product){alert('Digite o nome do produto.');return}
  const style=$('videoStyle').value;
  const output=`ROTEIRO — 15 SEGUNDOS\n\n0–3s | GANCHO: “Olha o detalhe desse ${product}!”\n3–10s | DEMONSTRAÇÃO: mostrar o produto de perto, seus detalhes e benefícios confirmados: ${details||'descrever somente características verificadas do produto'}.\n10–15s | CHAMADA PARA AÇÃO: “Confira os detalhes e o preço atualizado no link do produto!”\n\nPROMPT PARA IA DE VÍDEO\nCrie um vídeo vertical 9:16, com 15 segundos, em estilo ${style}. Produto: ${product}. Características: ${details||'usar apenas características visíveis e confirmadas'}. Priorize realismo e fidelidade total à foto original: não alterar formato, cor, textura, logotipo, proporções ou acessórios do produto. Faça movimentos suaves de câmera, enquadramentos próximos e demonstração clara. Use iluminação natural, cenário coerente e aparência de vídeo UGC autêntico. Não invente funcionalidades, avaliações, preços, descontos ou resultados. Deixe espaço visual para legenda. Finalize com uma chamada para conferir o produto.`;
- $('videoOutput').textContent=output;$('videoOutput').hidden=false;$('copyVideo').hidden=false;
+ $('videoOutput').textContent=output;$('videoOutput').hidden=false;$('copyVideo').hidden=false;$('youtubeCreateArea').hidden=false;
 };
 $('copyVideo').onclick=async()=>{try{await navigator.clipboard.writeText($('videoOutput').textContent);alert('Texto copiado!')}catch(e){alert('Não foi possível copiar automaticamente. Toque e segure o texto para selecionar e copiar.')}};
 $('review').onclick=()=>{
