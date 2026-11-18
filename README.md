@@ -1,2 +1,0 @@
-# ShoopeviralIA
-App shoopeviralA
