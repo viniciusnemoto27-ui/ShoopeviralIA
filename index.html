@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>Gerador de Vídeos IA</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#101114;color:#f5f5f5;font-family:Arial,sans-serif}
+    .wrap{max-width:760px;margin:auto;padding:22px 16px 48px}.brand{font-size:13px;color:#ff7043;letter-spacing:2px;font-weight:bold}
+    h1{font-size:28px;margin:9px 0 6px}.sub{color:#b9bbc2;line-height:1.5;margin:0 0 22px}
+    .panel{background:#1b1d22;border:1px solid #30333b;border-radius:16px;padding:18px;margin:14px 0}
+    label{display:block;font-weight:bold;margin:14px 0 7px}input,textarea,select{width:100%;background:#101114;border:1px solid #414550;border-radius:10px;color:#fff;padding:13px;font-size:16px}
+    textarea{min-height:90px;resize:vertical}.file{padding:12px}.btn{width:100%;border:0;border-radius:11px;background:#f4512a;color:white;font-size:17px;font-weight:bold;padding:15px;margin-top:18px}
+    .btn:disabled{opacity:.55}.status{font-size:13px;color:#b9bbc2;margin-top:12px;line-height:1.5}.result{display:none}
+    .item{border:1px solid #3a3d46;border-radius:12px;padding:14px;margin:12px 0;background:#14161a}
+    .item h3{margin:0 0 9px;font-size:16px}.prompt{white-space:pre-wrap;color:#e2e3e7;line-height:1.5;font-size:14px}
+    .copy{background:#343842;color:#fff;border:0;border-radius:8px;padding:10px 13px;margin-top:12px}
+    .preview{max-width:100%;max-height:220px;display:none;margin:12px auto 0;border-radius:10px}
+    .notice{font-size:12px;color:#aeb1ba;line-height:1.5}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">ACHADINHOS • IA</div>
+    <h1>Gerador de vídeos</h1>
+    <p class="sub">Envie a foto do produto e crie 3 ideias de vídeos verticais para divulgar seus achadinhos.</p>
+
+    <section class="panel">
+      <form id="form">
+        <label for="productImage">Foto do produto</label>
+        <input class="file" id="productImage" name="productImage" type="file" accept="image/*" required>
+        <img id="preview" class="preview" alt="Prévia da foto do produto">
+
+        <label for="productName">Nome do produto</label>
+        <input id="productName" name="productName" maxlength="120" placeholder="Ex.: Smartwatch GT11" required>
+
+        <label for="details">Características / informações do anúncio</label>
+        <textarea id="details" name="details" maxlength="600" placeholder="Descreva os detalhes que aparecem no anúncio. Evite incluir informações não confirmadas."></textarea>
+
+        <label for="style">Estilo dos vídeos</label>
+        <select id="style" name="style">
+          <option>publicidade natural</option>
+          <option>influenciador apresentando o produto</option>
+          <option>demonstração rápida e dinâmica</option>
+          <option>estilo unboxing</option>
+        </select>
+
+        <button class="btn" id="generate" type="submit">GERAR 3 PROMPTS</button>
+        <div id="status" class="status" role="status">A imagem é enviada ao servidor do seu aplicativo para processamento.</div>
+      </form>
+    </section>
+
+    <section id="result" class="panel result">
+      <h2>Seus 3 vídeos</h2>
+      <p class="notice">Copie cada prompt e use-o na ferramenta de vídeo IA que você utiliza.</p>
+      <div id="prompts"></div>
+    </section>
+  </main>
+<script>
+const form = document.getElementById("form");
+const fileInput = document.getElementById("productImage");
+const preview = document.getElementById("preview");
+const statusBox = document.getElementById("status");
+const generate = document.getElementById("generate");
+
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+  if (!file) { preview.style.display = "none"; return; }
+  if (!file.type.startsWith("image/")) { statusBox.textContent = "Selecione uma imagem válida."; fileInput.value = ""; return; }
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+});
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!fileInput.files[0]) return;
+  generate.disabled = true;
+  generate.textContent = "GERANDO...";
+  statusBox.textContent = "Enviando a foto e preparando os 3 prompts...";
+  document.getElementById("result").style.display = "none";
+
+  try {
+    const data = new FormData(form);
+    const response = await fetch("/api/generate-videos", { method: "POST", body: data });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "Erro ao gerar.");
+
+    const container = document.getElementById("prompts");
+    container.replaceChildren();
+    result.prompts.forEach((prompt, index) => {
+      const card = document.createElement("article");
+      card.className = "item";
+      const heading = document.createElement("h3");
+      heading.textContent = `VÍDEO ${index + 1}`;
+      const content = document.createElement("div");
+      content.className = "prompt";
+      content.textContent = prompt;
+      const copy = document.createElement("button");
+      copy.className = "copy";
+      copy.type = "button";
+      copy.textContent = "Copiar prompt";
+      copy.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(prompt);
+        copy.textContent = "Copiado!";
+        setTimeout(() => copy.textContent = "Copiar prompt", 1600);
+      });
+      card.append(heading, content, copy);
+      container.append(card);
+    });
+    document.getElementById("result").style.display = "block";
+    statusBox.textContent = result.message;
+  } catch (error) {
+    statusBox.textContent = error.message;
+  } finally {
+    generate.disabled = false;
+    generate.textContent = "GERAR 3 PROMPTS";
+  }
+});
+</script>
+</body>
+</html>
